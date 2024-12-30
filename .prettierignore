@@ -1,0 +1,4 @@
+dist
+.output
+.nitro
+pnpm-lock.yaml
