@@ -1,5 +1,6 @@
 export default defineNitroConfig({
 	srcDir: "src",
+	errorHandler: "~/error",
 	compatibilityDate: "2024-12-30",
 	compressPublicAssets: {
 		gzip: true,
