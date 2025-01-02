@@ -56,7 +56,7 @@ export const Header = () => {
 				<MoonIcon className="iconDark" />
 			</button>
 			<a
-				className="iconButton"
+				className="iconButton iconButton__desktop"
 				title="Project source code"
 				href="https://github.com/pajecawav/better-hn-nitro"
 				rel="noreferrer noopener"
