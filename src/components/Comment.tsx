@@ -19,11 +19,11 @@ export const Comment = ({ comment, rootId, parentId, prevId, nextId }: CommentPr
 		<article
 			id={`comment-${comment.id}`}
 			class="comment"
-			data-rootid={rootId}
-			data-parentid={parentId}
-			data-nextid={nextId}
-			data-previd={prevId}
-			data-childid={comment.comments[0]?.id ?? undefined}
+			// data-rootid={rootId}
+			// data-parentid={parentId}
+			// data-nextid={nextId}
+			// data-previd={prevId}
+			// data-childid={comment.comments[0]?.id ?? undefined}
 		>
 			<div class="commentBody" tabindex={-1}>
 				<p class="info">
