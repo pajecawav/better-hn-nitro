@@ -1,6 +1,10 @@
-export class Comments {
+const getComment = (commentId: number) => {
+	return document.getElementById(`comment-${commentId}`);
+};
+
+(window as any).Comments = {
 	toggleComment(commentId: number) {
-		const comment = this.getComment(commentId);
+		const comment = getComment(commentId);
 
 		if (!comment) {
 			return;
@@ -10,9 +14,5 @@ export class Comments {
 		comment.dataset.folded = String(!isFolded);
 
 		comment.querySelector(".info")?.scrollIntoView({ block: "nearest" });
-	}
-
-	getComment(commentId: number) {
-		return document.getElementById(`comment-${commentId}`);
-	}
-}
+	},
+};

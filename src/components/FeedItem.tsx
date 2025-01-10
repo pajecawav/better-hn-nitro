@@ -24,7 +24,7 @@ export const FeedItem = ({ item, index }: FeedItemProps) => {
 						{item.points} points by <a href={`/user/${item.user}`}>{item.user}</a>{" "}
 						{item.time_ago}
 						{" | "}
-						<a href={`/post/${item.id}`}>
+						<a href={`/post/${item.id}`} data-prefetch>
 							{item.comments_count}&nbsp;
 							{item.comments_count === 1 ? "comment" : "comments"}
 						</a>
