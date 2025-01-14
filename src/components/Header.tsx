@@ -25,6 +25,7 @@ export const Header = () => {
 						activeClassName="link__active"
 						href={link.href}
 						isActive={link.href === url.pathname}
+						data-prefetch
 					>
 						{link.title}
 					</Link>

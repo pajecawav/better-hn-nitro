@@ -11,7 +11,7 @@ export const FeedItem = ({ item, index }: FeedItemProps) => {
 			<span className="index">{index}</span>
 			<div className="item">
 				<h2>
-					<a href={item.domain ? item.url! : `/item/${item.id}`} className="link">
+					<a href={item.domain ? item.url! : `/post/${item.id}`} className="link">
 						{item.title}{" "}
 						{item.domain && <span className="domain">({item.domain})</span>}
 					</a>
