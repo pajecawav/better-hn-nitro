@@ -16,6 +16,8 @@ interface RenderPageOptions {
 export const renderPage = async (page: Child, { title, event }: RenderPageOptions) => {
 	// timing.start("render");
 
+	setResponseHeader(event, "content-type", "text/html; charset=utf-8");
+
 	const assets = await getAssets();
 
 	const theme = (getCookie(event, THEME_COOKIE) ?? DEFAULT_THEME) as Theme;
