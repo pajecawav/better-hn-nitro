@@ -26,41 +26,38 @@ export default eventHandler(async event => {
 
 	return renderPage(
 		<>
-			<>
-				<div class="post">
-					<article class="item">
-						<Link href={url}>
-							<h1 class="title">{post.title}</h1>
-							{post.domain && <span class="domain"> ({post.domain})</span>}
-						</Link>
+			<div class="post">
+				<article class="item">
+					<Link href={url}>
+						<h1 class="title">{post.title}</h1>
+						{post.domain && <span class="domain"> ({post.domain})</span>}
+					</Link>
 
-						<p class="info">
-							{post.points} points by{" "}
-							<Link href={`/user/${post.user}`}>{post.user}</Link> {post.time_ago} |{" "}
-							{post.comments_count}{" "}
-							{post.comments_count === 1 ? "comment" : "comments"}
-						</p>
+					<p class="info">
+						{post.points} points by <Link href={`/user/${post.user}`}>{post.user}</Link>{" "}
+						{post.time_ago} | {post.comments_count}{" "}
+						{post.comments_count === 1 ? "comment" : "comments"}
+					</p>
 
-						{post.content && (
-							<div
-								class="content"
-								dangerouslySetInnerHTML={{
-									__html: replaceHnPostLinks(post.content),
-								}}
-							/>
-						)}
-					</article>
-				</div>
+					{post.content && (
+						<div
+							class="content"
+							dangerouslySetInnerHTML={{
+								__html: replaceHnPostLinks(post.content),
+							}}
+						/>
+					)}
+				</article>
+			</div>
 
-				{post.comments.map((comment, index) => (
-					<Comment
-						comment={comment}
-						rootId={comment.id}
-						prevId={post.comments[index - 1]?.id}
-						nextId={post.comments[index + 1]?.id}
-					/>
-				))}
-			</>
+			{post.comments.map((comment, index) => (
+				<Comment
+					comment={comment}
+					rootId={comment.id}
+					prevId={post.comments[index - 1]?.id}
+					nextId={post.comments[index + 1]?.id}
+				/>
+			))}
 		</>,
 		{ title: post.title, event, timing },
 	);

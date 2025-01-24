@@ -1,6 +1,6 @@
 import { EventHandlerRequest, H3Event } from "h3";
 import { Child } from "hono/jsx";
-import { renderToString } from "hono/jsx/dom/server";
+import { renderToReadableStream } from "hono/jsx/dom/server";
 import { ServerTiming } from "tiny-server-timing";
 import { getAssets } from "./assets";
 import { App } from "./components/App";
@@ -13,8 +13,10 @@ interface RenderPageOptions {
 	event: H3Event<EventHandlerRequest>;
 }
 
-export const renderPage = async (page: Child, { title, timing, event }: RenderPageOptions) => {
-	timing.start("render");
+export const renderPage = async (page: Child, { title, event }: RenderPageOptions) => {
+	// timing.start("render");
+
+	setResponseHeader(event, "content-type", "text/html; charset=utf-8");
 
 	const assets = await getAssets();
 
@@ -29,18 +31,18 @@ export const renderPage = async (page: Child, { title, timing, event }: RenderPa
 		theme,
 	};
 
-	const html = renderToString(
+	// timing.end("render");
+
+	// TODO: figure out how to send server-timing
+	// setHeaders(event, timing.getHeaders());
+
+	setHeader(event, "Content-Type", "text/html, charset=UTF-8");
+
+	event.node.res.write("<!DOCTYPE html>");
+
+	return renderToReadableStream(
 		<SSRContext.Provider value={context}>
 			<App>{page}</App>
 		</SSRContext.Provider>,
 	);
-
-	timing.end("render");
-
-	setHeaders(event, timing.getHeaders());
-
-	return `
-<!DOCTYPE html>
-${html}
-`;
 };
