@@ -48,11 +48,7 @@ export const Header = () => {
 			>
 				<MagnifyingGlassIcon />
 			</a>
-			<button
-				className="iconButton"
-				// title="`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`"
-				onclick="UI.switchTheme()"
-			>
+			<button className="iconButton" title="Toggle theme" onclick="UI.switchTheme()">
 				<SunIcon className="iconLight" />
 				<MoonIcon className="iconDark" />
 			</button>

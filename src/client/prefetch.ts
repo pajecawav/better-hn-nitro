@@ -40,5 +40,5 @@ document.querySelectorAll<HTMLAnchorElement>("[data-prefetch]").forEach(el => {
 
 	el.addEventListener("mouseenter", onMouseEnter);
 	el.addEventListener("mouseleave", onMouseLeave);
-	el.addEventListener("touchstart", handle);
+	el.addEventListener("touchstart", handle, { passive: true });
 });
